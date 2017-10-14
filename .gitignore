@@ -35,7 +35,7 @@ sysinfo.txt
 
 #other
 *.DS_Store
-Assets/Plugins/Editor
-Assets/Plugins/Editor.meta
+/Assets/Plugins/Editor/JetBrains/
+/Assets/Plugins/Editor/JetBrains.meta
 *.idea/
 ProjectSettings/
