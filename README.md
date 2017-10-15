@@ -1,4 +1,4 @@
-# RadarMap
+# RadarChart
 
 - change the vertices by redefine the parameter in scripts RadarMap
 - call the function RebuildSubradar to rebuild the radar
