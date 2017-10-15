@@ -12,7 +12,7 @@ public class TestInspector : Editor
         RadarChart myScript = (RadarChart)target;
         if(GUILayout.Button("PopulateMesh"))
         {
-            myScript.subRaderChart[0].Rebuild(CanvasUpdate.Layout);
+            Debug.Log("test inspector GUI");
         }
     }
 }

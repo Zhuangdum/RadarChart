@@ -74,9 +74,6 @@ public class RadarChart : Graphic
 
     //子多边形的顶点位置数据
     public List<VertPosition> vertPosList;
-    
-    //子雷达图的组件
-    public SubRadarChart[] subRaderChart;
 
     //重绘UI的Mesh
     protected override void OnPopulateMesh(VertexHelper vh)
@@ -108,10 +105,10 @@ public class RadarChart : Graphic
     public void RebuildSubRadar()
     {
         //绘制子雷达图的模样
-        for (int i = 0; i < subRaderChart.Length; i++)
+        for (int i = 0; i < vertPosList.Count; i++)
         {
-            subRaderChart[i].SetRadarVertext(vertPosList[i].GetVertPos(), this.edges);
-            subRaderChart[i].SetVerticesDirty();
+            //重新绘制子雷达图
+            vertPosList[i].RebuildSubRadar(edges);
         }
     }
 
@@ -179,10 +176,23 @@ public class RadarChart : Graphic
 [Serializable]
 public class VertPosition
 {
-    [SerializeField] private float[] vertPos;
+    [Range(0f, 1f)]
+    [SerializeField] private float vert1;
+    [Range(0f, 1f)]
+    [SerializeField] private float vert2;
+    [Range(0f, 1f)]
+    [SerializeField] private float vert3;
+    [Range(0f, 1f)]
+    [SerializeField] private float vert4;
+    [Range(0f, 1f)]
+    [SerializeField] private float vert5;
+    
+    //子雷达图的组件
+    public SubRadarChart subRaderChart;
 
-    public float[] GetVertPos()
+    public void RebuildSubRadar(float edges)
     {
-        return vertPos;
+        subRaderChart.SetRadarVertext(new []{vert1, vert2, vert3, vert4, vert5}, edges);
+        subRaderChart.SetVerticesDirty();
     }
 }
