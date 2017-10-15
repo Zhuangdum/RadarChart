@@ -2,17 +2,17 @@
 using UnityEditor;
 using UnityEngine.UI;
 
-[CustomEditor(typeof(RadarMap))]
+[CustomEditor(typeof(RadarChart))]
 public class TestInspector : Editor
 {
     public override void OnInspectorGUI()
     {        
         DrawDefaultInspector();
         
-        RadarMap myScript = (RadarMap)target;
+        RadarChart myScript = (RadarChart)target;
         if(GUILayout.Button("PopulateMesh"))
         {
-            myScript.subRaderMap[0].Rebuild(CanvasUpdate.Layout);
+            myScript.subRaderChart[0].Rebuild(CanvasUpdate.Layout);
         }
     }
 }

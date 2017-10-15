@@ -56,7 +56,7 @@ public enum ShadeType
              0       1    
     
 */
-public class RadarMap : Graphic
+public class RadarChart : Graphic
 {
     private VertexHelper vertextHelper;
 
@@ -76,7 +76,7 @@ public class RadarMap : Graphic
     public List<VertPosition> vertPosList;
     
     //子雷达图的组件
-    public SubRadarMap[] subRaderMap;
+    public SubRadarChart[] subRaderChart;
 
     //重绘UI的Mesh
     protected override void OnPopulateMesh(VertexHelper vh)
@@ -108,10 +108,10 @@ public class RadarMap : Graphic
     public void RebuildSubRadar()
     {
         //绘制子雷达图的模样
-        for (int i = 0; i < subRaderMap.Length; i++)
+        for (int i = 0; i < subRaderChart.Length; i++)
         {
-            subRaderMap[i].SetRadarVertext(vertPosList[i].GetVertPos(), this.edges);
-            subRaderMap[i].SetVerticesDirty();
+            subRaderChart[i].SetRadarVertext(vertPosList[i].GetVertPos(), this.edges);
+            subRaderChart[i].SetVerticesDirty();
         }
     }
 

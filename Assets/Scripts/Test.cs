@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    public RadarMap radarMap;
+    public RadarChart radarChart;
     public void UpdateCanvas()
     {
-        radarMap.rectTransform.sizeDelta = new Vector2(100, 130);
+        radarChart.rectTransform.sizeDelta = new Vector2(100, 130);
     }
     
     public void UpdateColor()
     {
-        radarMap.SetVerticesDirty();
+        radarChart.SetVerticesDirty();
     }
 
     public void UpdateVertices()
     {
-        radarMap.RebuildSubRadar();
+        radarChart.RebuildSubRadar();
     }
 }
