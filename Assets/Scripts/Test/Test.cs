@@ -19,4 +19,9 @@ public class Test : MonoBehaviour
     {
         radarChart.RebuildSubRadar();
     }
+
+    public void TestClick()
+    {
+        Debug.Log("you have click the button");
+    }
 }
