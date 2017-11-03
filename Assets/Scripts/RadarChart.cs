@@ -157,7 +157,7 @@ public class RadarChart : Graphic
         //7
         vh.AddVert(new Vector3(vertPos[2].x, vertPos[2].y), color, new Vector2(0.5f, 1.0f));
 
-
+        
         //添加左半边的三角形
         vh.AddTriangle(0, 1, 2);
         vh.AddTriangle(2, 3, 0);
@@ -176,16 +176,33 @@ public class RadarChart : Graphic
 [Serializable]
 public class VertPosition
 {
+    //0
     [Range(0f, 1f)]
     [SerializeField] private float vert1;
+    //1
     [Range(0f, 1f)]
     [SerializeField] private float vert2;
+    //2
     [Range(0f, 1f)]
     [SerializeField] private float vert3;
+    //3
     [Range(0f, 1f)]
     [SerializeField] private float vert4;
+    //4
     [Range(0f, 1f)]
     [SerializeField] private float vert5;
+    
+    /*
+     * 数组对应的顶点位置
+     *           3           
+     *
+     * 
+     *  4                  2 
+     *
+     *
+     * 
+     *       0        1
+     */
     
     //子雷达图的组件
     public SubRadarChart subRaderChart;
