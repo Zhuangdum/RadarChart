@@ -5,3 +5,4 @@
 
 ![image](https://github.com/Zhuangdum/RadarMap/blob/master/RadarMap.png)
 
+- add subradar color lerp from bottom to top function
