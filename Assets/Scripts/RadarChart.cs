@@ -55,6 +55,8 @@ public enum ShadeType
              0       1    
     
 */
+
+[RequireComponent(typeof(CanvasRenderer))]
 public class RadarChart : Graphic
 {
     private VertexHelper vertextHelper;
