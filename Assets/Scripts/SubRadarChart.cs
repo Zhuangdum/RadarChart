@@ -13,10 +13,10 @@ public class SubRadarChart : Graphic
     [SerializeField] private Color topColor;
 
     //用于记录背景多边形的顶点数组位置
-    private Vector2[] vertPos;
+    private Vector2[] vertPos = new Vector2[7];
 
     //用于记录多边形每个顶点的颜色
-    private Color[] vertColor;
+    private Color[] vertColor = new Color[6];
 
     //多边形类型
     public ShadeType shadeType;
@@ -61,8 +61,6 @@ public class SubRadarChart : Graphic
                 pixelAdjustedRect.y + edges);
 
             //初始化顶点和颜色数组
-            vertPos = new Vector2[7];
-            vertColor = new Color[6];
 
             //计算顶点和颜色数组
             //0
@@ -106,6 +104,7 @@ public class SubRadarChart : Graphic
         else
         {
             //TODO 传入的数据没有按照格式传递
+            throw new FormatException();
         }
     }
 
@@ -114,75 +113,11 @@ public class SubRadarChart : Graphic
     {
         if (shadeType == ShadeType.Pentagon)
         {
-            //1
-            //DrawPentagon(vh);
-            //2
-            //DrawPentagonTest(vh);
-            //3
             DrawPentagonByCenter(vh);
             Debug.Log("重绘制子雷达图");
         }
     }
-
-    //绘制五边形
-    private void DrawPentagon(VertexHelper vh)
-    {
-        Color32 color = (Color32) this.color;
-        vh.Clear();
-
-        //添加左半边的四边形
-        //0
-        vh.AddVert(new Vector3(vertPos[0].x, vertPos[0].y), color, new Vector2(0.0f, 0.0f));
-        //1
-        vh.AddVert(new Vector3(vertPos[1].x, vertPos[1].y), color, new Vector2(0.5f, 0.0f));
-        //2
-        vh.AddVert(new Vector3(vertPos[2].x, vertPos[2].y), color, new Vector2(0.5f, 1f));
-        //3
-        vh.AddVert(new Vector3(vertPos[3].x, vertPos[3].y), color, new Vector2(0.0f, 0.5f));
-
-//        //添加右半边的四边形
-        //4
-        vh.AddVert(new Vector3(vertPos[1].x, vertPos[1].y), color, new Vector2(0.5f, 0f));
-        //5
-        vh.AddVert(new Vector3(vertPos[4].x, vertPos[4].y), color, new Vector2(1.0f, 0.0f));
-        //6
-        vh.AddVert(new Vector3(vertPos[5].x, vertPos[5].y), color, new Vector2(1f, 0.5f));
-        //7
-        vh.AddVert(new Vector3(vertPos[2].x, vertPos[2].y), color, new Vector2(0.5f, 1.0f));
-
-
-        //添加左半边的三角形
-        vh.AddTriangle(0, 1, 2);
-        vh.AddTriangle(2, 3, 0);
-
-//        //添加右半边的三角形
-        vh.AddTriangle(4, 5, 6);
-        vh.AddTriangle(6, 7, 4);
-    }
-
-    private void DrawPentagonTest(VertexHelper vh)
-    {
-        Color32 color = (Color32) this.color;
-        vh.Clear();
-
-        //添加左半边的四边形
-        //0
-        vh.AddVert(new Vector3(vertPos[0].x, vertPos[0].y), color, new Vector2(0.0f, 0.0f));
-        //1
-        vh.AddVert(new Vector3(vertPos[4].x, vertPos[4].y), color, new Vector2(1.0f, 0.0f));
-        //2
-        vh.AddVert(new Vector3(vertPos[5].x, vertPos[5].y), color, new Vector2(1f, 0.5f));
-        //3
-        vh.AddVert(new Vector3(vertPos[2].x, vertPos[2].y), color, new Vector2(0.5f, 1f));
-        //4
-        vh.AddVert(new Vector3(vertPos[3].x, vertPos[3].y), color, new Vector2(0.0f, 0.5f));
-
-        //添加左半边的三角形
-        vh.AddTriangle(0, 1, 2);
-        vh.AddTriangle(0, 2, 3);
-        vh.AddTriangle(0, 3, 4);
-    }
-
+    
     /*通过中心点绘制五边形
      * 顶点位置示意图
      *                3
@@ -203,7 +138,6 @@ public class SubRadarChart : Graphic
     {
         Color32 color = (Color32) this.color;
         vh.Clear();
-
         //添加左半边的四边形
         //0
         vh.AddVert(new Vector3(vertPos[0].x, vertPos[0].y), vertColor[0], new Vector2(0.0f, 0.0f));

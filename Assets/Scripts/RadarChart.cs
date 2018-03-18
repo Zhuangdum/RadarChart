@@ -91,13 +91,10 @@ public class RadarChart : Graphic
                 vertText[4].rectTransform.anchoredPosition = vertPos[5];
             }
         }
-        else if (shadeType == ShadeType.Hexagon)
+        else if(shadeType == ShadeType.Hexagon)
         {
-            DrawHexagon(vh);
-        }
-        else
-        {
-            DrawPentagon(vh);
+            // TODO @zhuangduanming
+            throw new NotImplementedException();
         }
     }
 
@@ -165,11 +162,6 @@ public class RadarChart : Graphic
 //        //添加右半边的三角形
         vh.AddTriangle(4, 5, 6);
         vh.AddTriangle(6, 7, 4);
-    }
-    
-    private void DrawHexagon(VertexHelper vh)
-    {
-        //TODO 待处理
     }
 }
 
