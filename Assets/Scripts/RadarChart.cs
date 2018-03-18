@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -168,6 +167,8 @@ public class RadarChart : Graphic
 [Serializable]
 public class VertPosition
 {
+    // 子雷达图的组件
+    public SubRadarChart subRaderChart;
     //0
     [Range(0f, 1f)]
     [SerializeField] private float vert1;
@@ -196,9 +197,7 @@ public class VertPosition
      *       0        1
      */
     
-    //子雷达图的组件
-    public SubRadarChart subRaderChart;
-
+    // 手动重绘子雷达图的图形
     public void RebuildSubRadar(float edges)
     {
         subRaderChart.SetRadarVertext(new []{vert1, vert2, vert3, vert4, vert5}, edges);

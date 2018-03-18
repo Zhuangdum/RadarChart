@@ -1,25 +1,24 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(CanvasRenderer))]
 public class SubRadarChart : Graphic
 {
+    // 多边形类型
+    public ShadeType shadeType;
+    
     private VertexHelper vertextHelper;
 
     [SerializeField] private Color bottomColor;
 
     [SerializeField] private Color topColor;
 
-    //用于记录背景多边形的顶点数组位置
+    // 用于记录背景多边形的顶点数组位置
     private Vector2[] vertPos = new Vector2[7];
 
-    //用于记录多边形每个顶点的颜色
+    // 用于记录多边形每个顶点的颜色
     private Color[] vertColor = new Color[6];
-
-    //多边形类型
-    public ShadeType shadeType;
 
     /*更加传入的顶点数据来绘制雷达图
         顶点位置示意图
@@ -50,6 +49,7 @@ public class SubRadarChart : Graphic
      *           0             1
      *
      */
+    // 设置雷达图顶点信息
     public void SetRadarVertext(float[] vertArray, float edges)
     {
         if (vertArray.Length == 5)
@@ -108,12 +108,12 @@ public class SubRadarChart : Graphic
         }
     }
 
-    //重绘UI的Mesh
+    // 重绘UI的Mesh
     protected override void OnPopulateMesh(VertexHelper vh)
     {
         if (shadeType == ShadeType.Pentagon)
         {
-            DrawPentagonByCenter(vh);
+            DrawPentagon(vh);
             Debug.Log("重绘制子雷达图");
         }
     }
@@ -134,7 +134,8 @@ public class SubRadarChart : Graphic
      *
      */
 
-    private void DrawPentagonByCenter(VertexHelper vh)
+    // 填充五边形的绘制信息到UGUI内置的数据结构里
+    private void DrawPentagon(VertexHelper vh)
     {
         Color32 color = (Color32) this.color;
         vh.Clear();
